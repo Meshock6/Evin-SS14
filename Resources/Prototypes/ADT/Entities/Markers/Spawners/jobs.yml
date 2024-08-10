@@ -1,0 +1,11 @@
+- type: entity
+  id: SpawnADTBlueShieldOfficer
+  parent: ADTSpawnPointJobBase
+  name: ADTBlueShieldOfficer
+  components:
+    - type: SpawnPoint
+      job_id: ADTBlueShieldOfficer
+    - type: Sprite
+      layers:
+        - state: green
+        - state: blueshield
