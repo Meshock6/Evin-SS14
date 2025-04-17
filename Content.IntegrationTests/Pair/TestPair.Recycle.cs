@@ -105,6 +105,8 @@ public sealed partial class TestPair : IAsyncDisposable
         State = PairState.CleanDisposed;
         await OnCleanDispose();
 
+        State = PairState.Dead; // Evin edit
+
         PoolManager.NoCheckReturn(this);
         ClearContext();
     }
@@ -115,7 +117,7 @@ public sealed partial class TestPair : IAsyncDisposable
         {
             case PairState.Dead:
             case PairState.Ready:
-            case PairState.CleanDisposed: // Evin edit
+            case PairState.CleanDisposed: // Evin Edit
                 return;
             case PairState.InUse:
                 await _testOut.WriteLineAsync($"{nameof(DisposeAsync)}: Dirty return of pair {Id} started");
