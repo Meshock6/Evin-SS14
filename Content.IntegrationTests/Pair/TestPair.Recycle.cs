@@ -65,6 +65,7 @@ public sealed partial class TestPair : IAsyncDisposable
             {
                 Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}:", Server.UnhandledException);
             }
+        }
 
         if (Settings.MustNotBeReused)
         {
