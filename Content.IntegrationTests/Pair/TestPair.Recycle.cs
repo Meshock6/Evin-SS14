@@ -116,12 +116,16 @@ public sealed partial class TestPair : IAsyncDisposable
             case PairState.Dead:
             case PairState.Ready:
                 break;
+    
             case PairState.InUse:
-                await _testOut.WriteLineAsync($"{nameof(DisposeAsync)}: Dirty return of pair {Id} started");
-                await OnDirtyDispose();
+                await _testOut.WriteLineAsync($"{nameof(DisposeAsync)}: Clean return of pair {Id} started via DisposeAsync");
+                State = PairState.CleanDisposed;
+                await OnCleanDispose();
+                State = PairState.Ready;
                 PoolManager.NoCheckReturn(this);
                 ClearContext();
                 break;
+    
             default:
                 throw new Exception($"{nameof(DisposeAsync)}: Unexpected state. Pair: {Id}. State: {State}.");
         }
