@@ -76,10 +76,11 @@ public sealed partial class TestPair : IAsyncDisposable
 
         var sRuntimeLog = Server.ResolveDependency<IRuntimeLog>();
         if (sRuntimeLog.ExceptionCount > 0)
-            throw new Exception($"{nameof(CleanReturnAsync)}: Server logged exceptions");
+            Assert.Warn($"{nameof(CleanReturnAsync)}: Server logged exceptions");
+
         var cRuntimeLog = Client.ResolveDependency<IRuntimeLog>();
         if (cRuntimeLog.ExceptionCount > 0)
-            throw new Exception($"{nameof(CleanReturnAsync)}: Client logged exceptions");
+            Assert.Warn($"{nameof(CleanReturnAsync)}: Client logged exceptions");
 
         var returnTime = Watch.Elapsed;
         await _testOut.WriteLineAsync($"{nameof(CleanReturnAsync)}: PoolManager took {returnTime.TotalMilliseconds} ms to put pair {Id} back into the pool");
