@@ -58,12 +58,12 @@ public sealed partial class TestPair : IAsyncDisposable
         {
             if (Client.IsAlive == false)
             {
-                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the client in pair {Id}: {Client.UnhandledException}");
+                throw new Exception($"{nameof(CleanReturnAsync)}: Test killed the client in pair {Id}:", Client.UnhandledException);
             }
 
             if (Server.IsAlive == false)
             {
-                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}: {Server.UnhandledException}");
+                throw new Exception($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}:", Server.UnhandledException);
             }
         }
 
@@ -78,7 +78,6 @@ public sealed partial class TestPair : IAsyncDisposable
         var sRuntimeLog = Server.ResolveDependency<IRuntimeLog>();
         if (sRuntimeLog.ExceptionCount > 0)
             Assert.Warn($"{nameof(CleanReturnAsync)}: Server logged exceptions");
-
         var cRuntimeLog = Client.ResolveDependency<IRuntimeLog>();
         if (cRuntimeLog.ExceptionCount > 0)
             Assert.Warn($"{nameof(CleanReturnAsync)}: Client logged exceptions");
@@ -105,9 +104,7 @@ public sealed partial class TestPair : IAsyncDisposable
         await _testOut.WriteLineAsync($"{nameof(CleanReturnAsync)}: Return of pair {Id} started");
         State = PairState.CleanDisposed;
         await OnCleanDispose();
-
-        State = PairState.Dead; // Evin edit
-
+        State = PairState.Ready;
         PoolManager.NoCheckReturn(this);
         ClearContext();
     }
@@ -118,8 +115,7 @@ public sealed partial class TestPair : IAsyncDisposable
         {
             case PairState.Dead:
             case PairState.Ready:
-            case PairState.CleanDisposed: // Evin Edit
-                return;
+                break;
             case PairState.InUse:
                 await _testOut.WriteLineAsync($"{nameof(DisposeAsync)}: Dirty return of pair {Id} started");
                 await OnDirtyDispose();
@@ -159,10 +155,7 @@ public sealed partial class TestPair : IAsyncDisposable
             Assert.That(gameTicker.DummyTicker, Is.False);
             Server.CfgMan.SetCVar(CCVars.GameLobbyEnabled, true);
             await Server.WaitPost(() => gameTicker.RestartRound());
-            // Evin-edit-start
-            await RunTicksSync(10);
-            await ReallyBeIdle();
-            // Evin-edit-end
+            await RunTicksSync(1);
         }
 
         //Apply Cvars
@@ -175,10 +168,7 @@ public sealed partial class TestPair : IAsyncDisposable
         await testOut.WriteLineAsync($"Recycling: {Watch.Elapsed.TotalMilliseconds} ms: Restarting server again");
         await Server.WaitPost(() => Server.EntMan.FlushEntities());
         await Server.WaitPost(() => gameTicker.RestartRound());
-        // Evin-edit-start
-        await RunTicksSync(10);
-        await ReallyBeIdle();
-        // Evin-edit-end
+        await RunTicksSync(1);
 
         // Connect client
         if (settings.ShouldBeConnected)
