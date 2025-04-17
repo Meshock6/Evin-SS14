@@ -58,12 +58,12 @@ public sealed partial class TestPair : IAsyncDisposable
         {
             if (Client.IsAlive == false)
             {
-                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the client in pair {Id}:", Client.UnhandledException);
+                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the client in pair {Id}: {Client.UnhandledException}");
             }
 
             if (Server.IsAlive == false)
             {
-                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}:", Server.UnhandledException);
+                Assert.Warn($"{nameof(CleanReturnAsync)}: Test killed the server in pair {Id}: {Server.UnhandledException}");
             }
         }
 
