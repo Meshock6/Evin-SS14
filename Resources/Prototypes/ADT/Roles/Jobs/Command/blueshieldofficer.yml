@@ -36,6 +36,15 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Skills # Corvax-Next-Skills
+        skills:
+        - ShuttleControl
+        - Shooting
+        - Surgery
+        - MedicalEquipment
+      - type: CanChokeGrab
 
 - type: startingGear
   id: ADTBlueShieldOfficerGear
@@ -43,12 +52,14 @@
     head: ADTClothingHeadHatBeretBlueshieldBlack
     eyes: ADTClothingEyesGlassesBlueshield
     ears: ADTClothingHeadsetBlueshield
-    jumpsuit: ADTClothingUniformJumpsuitBlueshield
-    back: ADTClothingBlueshieldBackpack
     shoes: ClothingShoesBootsCombatFilled
     outerClothing: ADTClothingBlueshieldArmor
-    belt: ADTClothingBeltMedicalSecurityFilled
+    belt: ClothingBeltSheathBS
     gloves: ClothingHandsGlovesCombat
     id: ADTBlueshieldOfficerPDA
-    pocket2: HandheldCrewMonitor
+    pocket1: WeaponX2DualphaseEnergyLaserGun
+    pocket2: Handcuffs
     satchel: ADTClothingBackpackSatchelBlueshield
+    neck: ADTClothingNeckCloakBlueshield
+  inhand:
+  - ADTBaseWeaponCaseNTBS
