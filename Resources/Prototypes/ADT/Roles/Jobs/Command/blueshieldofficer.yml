@@ -40,17 +40,15 @@
 - type: startingGear
   id: ADTBlueShieldOfficerGear
   equipment:
-    # head: ADTClothingHeadHatBeretBlueshieldBlack
+    head: ADTClothingHeadHatBeretBlueshieldBlack
     eyes: ADTClothingEyesGlassesBlueshield
     ears: ADTClothingHeadsetBlueshield
-    # jumpsuit: ADTClothingUniformJumpsuitBlueshield
-    # back: ADTClothingBlueshieldBackpack
+    jumpsuit: ADTClothingUniformJumpsuitBlueshield
+    back: ADTClothingBlueshieldBackpack
     shoes: ClothingShoesBootsCombatFilled
     outerClothing: ADTClothingBlueshieldArmor
     belt: ADTClothingBeltMedicalSecurityFilled
     gloves: ClothingHandsGlovesCombat
     id: ADTBlueshieldOfficerPDA
     pocket2: HandheldCrewMonitor
-  # innerClothingSkirt: ClothingUniformJumpskirtBlueshield
-  # satchel: ADTClothingBackpackSatchelBlueshield
-  # duffelbag: ADTClothingBackpackDuffelBlueshield
+    satchel: ADTClothingBackpackSatchelBlueshield
