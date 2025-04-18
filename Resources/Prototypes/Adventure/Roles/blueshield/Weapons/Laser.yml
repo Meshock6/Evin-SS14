@@ -70,7 +70,7 @@
   name: станнер
   id: stanerBullet
   parent: BulletDisabler
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Adventure/Roles/blueshield/Weapons/UnivProjectiles.rsi
@@ -92,7 +92,7 @@
 # эффект от станнера
 - type: entity
   id: BulletImpactEffectDisablerBlue
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: TimedDespawn
       lifetime: 0.2
@@ -112,7 +112,7 @@
 # эффект от лазера
 - type: entity
   id: BulletImpactEffectLaserForBH
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
     - type: TimedDespawn
       lifetime: 0.2
