@@ -1,11 +1,11 @@
 
 # Blueshield
 - type: entity
-  parent: ClothingHeadHardsuitWithLightBase
+  parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ADTClothingHeadHelmetHardsuitBlueshield
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: blueshield hardsuit helmet
-  description: 
+  description:
   components:
   - type: Sprite
     sprite: ADT/Clothing/Head/Hardsuits/blueshield_hardsuithead.rsi
