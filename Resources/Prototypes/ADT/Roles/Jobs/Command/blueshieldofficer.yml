@@ -6,13 +6,13 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobCaptain
-      time: 36000 #10 hrs
+      time: 13800 #3 hrs
     - !type:RoleTimeRequirement
       role: JobHeadOfSecurity
-      time: 36000 #10 hrs
+      time: 13800 #3 hrs
     - !type:RoleTimeRequirement
       role: JobChiefMedicalOfficer
-      time: 18000 #5 hrs
+      time: 13800 #3 hrs
   weight: 15
   startingGear: ADTBlueShieldOfficerGear
   icon: "JobIconADTBlueShieldOfficer"
