@@ -8,24 +8,6 @@
     },
     "states": [
         {
-            "name": "green"
-        },
-        {
-            "name": "investigator"
-        },
-        {
-            "name": "magistrat"
-        },
-        {
-            "name": "iaa"
-        },
-        {
-            "name": "urist"
-        },
-        {
-            "name": "pathologist"
-        },
-        {
             "name": "blueshield"
         }
     ]

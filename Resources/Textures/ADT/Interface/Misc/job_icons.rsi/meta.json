@@ -9,12 +9,6 @@
     },
     "states": [
         {
-            "name": "Magistrat"
-        },
-        {
-            "name": "ADTPathologist"
-        },
-        {
             "name": "ADTBlueShieldOfficer"
         }
     ]
