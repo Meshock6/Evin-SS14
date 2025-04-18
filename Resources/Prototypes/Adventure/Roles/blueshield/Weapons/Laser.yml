@@ -51,7 +51,7 @@
   name: лазер
   id: LaserBulletForBH
   parent: EmitterBolt
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: Adventure/Roles/blueshield/Weapons/UnivProjectiles.rsi
