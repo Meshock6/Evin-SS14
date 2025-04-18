@@ -1,19 +1,19 @@
-name: RSI Diff
+name: Diff RSIs
 
 on:
   pull_request_target:
     paths:
       - '**.rsi/**.png'
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
   diff:
+    name: Diff RSI Changes
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout PR
+        uses: actions/checkout@v4.2.2
+
       - name: Get changed files
         id: files
         uses: Ana06/get-changed-files@v2.3.0
@@ -22,7 +22,8 @@ jobs:
           filter: |
             **.rsi
             **.png
-      - name: Diff RSIs
+
+      - name: Run RSI Diff Bot
         id: diff
         uses: space-wizards/RSIDiffBot@v1.1
         with:
@@ -33,9 +34,22 @@ jobs:
           basesha: ${{ github.event.pull_request.base.sha }}
           headname: ${{ github.event.pull_request.head.repo.full_name }}
           headsha: ${{ github.event.pull_request.head.sha }}
-      - name: Comment diff
-        uses: peter-evans/create-or-update-comment@v1
+
+      - name: Find existing RSI diff comment
+        id: find-comment
+        uses: peter-evans/find-comment@v1
         with:
-          issue-number: ${{ github.event.number }}
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '💠 **RSI Diff Bot**'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
           body: |
+            💠 **RSI Diff Bot**
+            
             ${{ steps.diff.outputs.summary-details }}
