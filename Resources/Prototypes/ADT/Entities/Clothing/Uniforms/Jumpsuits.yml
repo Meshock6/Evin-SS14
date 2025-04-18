@@ -12,11 +12,11 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: ADTClothingUniformJumpsuitBlueshieldTurtleneck
+  id: ADTClothingUniformJumpsuitTurtleneckBlueshield
   name: blueshield's turtleneck
   description: blueshield's turtleneck
   components:
   - type: Sprite
-    sprite: ADT/Clothing/Uniforms/Turtleneck/turtleneck_blueshield.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_blueshield.rsi
   - type: Clothing
-    sprite: ADT/Clothing/Uniforms/Turtleneck/turtleneck_blueshield.rsi
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/turtleneck_blueshield.rsi
