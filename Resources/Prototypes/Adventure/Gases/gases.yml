@@ -519,7 +519,7 @@
   name: reagent-name-hyper-noblium
   desc: reagent-desc-hyper-noblium
   physicalDesc: reagent-physical-desc-gaseous
-  flavor: обжигающе холодный
+  flavor: bitter
   color: "#0066ff"
   boilingPoint: -253.0
   meltingPoint: -259.2
