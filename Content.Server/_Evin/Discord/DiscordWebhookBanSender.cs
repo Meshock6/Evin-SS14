@@ -1,7 +1,6 @@
 using Content.Server.Discord;
 using System.Threading.Tasks;
 using Robust.Shared.IoC;
-using Content.Shared._Evin.ACVar;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
@@ -21,7 +20,6 @@ public sealed class DiscordWebhookBanSender
 
     private ISawmill _sawmill = default!;
 
-    private readonly string _iconUrl = "https://cdn.discordapp.com/emojis/1167383322863878214.webp?size=44";
     private readonly string _thumbnailIconUrl = "https://static.wikia.nocookie.net/ss14andromeda13/images/f/ff/Clown.png/revision/latest?cb=20230217121049&path-prefix=ru";
 
     public async void SendBanMessage(string? targetUsername, NetUserId? targetUserId, string? banningAdmin, NetUserId? banningAdminId, uint minutes, string reason)
@@ -41,7 +39,7 @@ public sealed class DiscordWebhookBanSender
 
             var payload = new WebhookPayload()
             {
-                Username = "Банановые острова",
+                Username = "Эвин перевозмог!",
                 Embeds = new List<WebhookEmbed>
                     {
                         new()
@@ -51,11 +49,9 @@ public sealed class DiscordWebhookBanSender
                             Description =  $"""
                                 > **Администратор**
                                 > **Логин:** {banningAdmin ?? "Консоль"}
-                                > **Дискорд:** <@{dataBanningAdmin?.DiscordId}>
 
                                 > **Нарушитель**
                                 > **Логин:** {targetUsername ?? "Неизвестно"}
-                                > **Дискорд:** <@{dataTargetUser?.DiscordId}>
                                                                
                                 > **Номер раунда:** {runId}
                                 > **Выдан:** {DateTimeOffset.Now}
@@ -66,7 +62,6 @@ public sealed class DiscordWebhookBanSender
                             Footer = new WebhookEmbedFooter
                             {
                                 Text = serverName,
-                                IconUrl = _iconUrl
                             },
                             Thumbnail = new WebhookEmbedThumbnail
                             {
@@ -76,7 +71,7 @@ public sealed class DiscordWebhookBanSender
                     },
             };
 
-            var webhookUrl = _cfg.GetCVar(ACVars.DiscordBanWebhook);
+            var webhookUrl = _cfg.GetCVar(CCVars.DiscordBanWebhook);
 
             if (string.IsNullOrEmpty(webhookUrl))
                 return;
@@ -116,7 +111,7 @@ public sealed class DiscordWebhookBanSender
 
             var payload = new WebhookPayload()
             {
-                Username = "Банановые острова",
+                Username = "Эвин перевозмог!",
                 Embeds = new List<WebhookEmbed>
                     {
                         new()
@@ -126,11 +121,9 @@ public sealed class DiscordWebhookBanSender
                             Description =  $"""
                                 > **Администратор**
                                 > **Логин:** {banningAdmin ?? "Консоль"}
-                                > **Дискорд:** <@{dataBanningAdmin?.DiscordId}>
 
                                 > **Нарушитель**
                                 > **Логин:** {targetUsername ?? "Неизвестно"}
-                                > **Дискорд:** <@{dataTargetUser?.DiscordId}>
 
                                 > **Номер раунда:** {runId}
                                 > **Выдан:** {DateTimeOffset.Now}
@@ -143,7 +136,6 @@ public sealed class DiscordWebhookBanSender
                             Footer = new WebhookEmbedFooter
                             {
                                 Text = serverName,
-                                IconUrl = _iconUrl
                             },
                             Thumbnail = new WebhookEmbedThumbnail
                             {
@@ -153,7 +145,7 @@ public sealed class DiscordWebhookBanSender
                     },
             };
 
-            var webhookUrl = _cfg.GetCVar(ACVars.DiscordBanWebhook);
+            var webhookUrl = _cfg.GetCVar(CCVars.DiscordBanWebhook);
 
             if (string.IsNullOrEmpty(webhookUrl))
                 return;
