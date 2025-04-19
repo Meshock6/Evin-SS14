@@ -6,7 +6,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
-using Content.Server._Adventure.Discord; // Evin Discord Webhook
+using Content.Server._Evin.Discord; // Evin Discord Webhook
 
 namespace Content.Server.Administration.Commands;
 
