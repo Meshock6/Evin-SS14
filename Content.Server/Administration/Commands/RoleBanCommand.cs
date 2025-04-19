@@ -8,6 +8,7 @@ using Content.Shared.Roles;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
+using Content.Server._Evin.Discord; // Evin Discord Webhook
 
 namespace Content.Server.Administration.Commands;
 
@@ -18,6 +19,7 @@ public sealed class RoleBanCommand : IConsoleCommand
     [Dependency] private readonly IBanManager _bans = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly DiscordWebhookBanSender _DiscordWebhookBanSender = default!; // Evin Discord Webhook
 
     public string Command => "roleban";
     public string Description => Loc.GetString("cmd-roleban-desc");
@@ -96,6 +98,8 @@ public sealed class RoleBanCommand : IConsoleCommand
         var targetHWid = located.LastHWId;
 
         _bans.CreateRoleBan(targetUid, located.Username, shell.Player?.UserId, null, targetHWid, job, minutes, severity, reason, DateTimeOffset.UtcNow);
+
+        _DiscordWebhookBanSender.SendRoleBansMessage(target, targetUid, shell.Player?.Name, shell.Player?.UserId, minutes, reason, new List<string> { job }); // Evin Discord Webhook
     }
 
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)

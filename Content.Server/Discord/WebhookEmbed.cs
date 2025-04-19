@@ -21,6 +21,11 @@ public struct WebhookEmbed
     [JsonPropertyName("fields")]
     public List<WebhookEmbedField> Fields { get; set; } = default!;
 
+    // Evin webhook ban begin
+    [JsonPropertyName("thumbnail")]
+    public WebhookEmbedThumbnail? Thumbnail { get; set; } = null;
+    // Evin webhook ban end
+
     public WebhookEmbed()
     {
     }
