@@ -216,7 +216,6 @@ public partial class ChatBox : UIWidget
     }
     // Corvax-Highlights-Start
 
-    public void AddLine(string message, Color color)
     public void AddLine(string message, Color color, int repeat = 0) // Evin-Tweak, EE - Chat stacking - repeatr)
     {
         int sizeIncrease = 11;
