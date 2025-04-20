@@ -42,6 +42,9 @@ public sealed partial class CCVars
     public static readonly CVarDef<bool> ChatShowTypingIndicator =
         CVarDef.Create("chat.show_typing_indicator", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
 
+    public static readonly CVarDef<int> ChatStackLastLines =
+        CVarDef.Create("chat.chatstack_last_lines", 1, CVar.CLIENTONLY | CVar.ARCHIVE, "How far into the chat history to look when looking for similiar messages to coalesce them.");
+
     public static readonly CVarDef<bool> ChatEnableFancyBubbles =
         CVarDef.Create("chat.enable_fancy_bubbles",
             true,
