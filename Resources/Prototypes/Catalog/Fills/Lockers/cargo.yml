@@ -29,6 +29,7 @@
     - id: ClothingEyesGlassesMeson
     - id: SeismicCharge
     # Lavaland Change End
+    - id: Floodlight
     - id: Flare
       prob: 0.3
       rolls: !type:ConstantNumberSelector

@@ -225,7 +225,7 @@
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    radius: 4
+    radius: 10
     netsync: false
   - type: Pullable
   - type: Puller
