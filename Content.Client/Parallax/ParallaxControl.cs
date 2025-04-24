@@ -19,31 +19,18 @@ public sealed class ParallaxControl : Control
 
     [ViewVariables(VVAccess.ReadWrite)] public Vector2 Offset { get; set; }
 
-    private string _parallaxId = "FastSpace";
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    public string ParallaxId 
-    { 
-        get => _parallaxId;
-        set
-        {
-            _parallaxId = value;
-            _parallaxManager.LoadParallaxByName(value);
-        }
-    }
-
     public ParallaxControl()
     {
         IoCManager.InjectDependencies(this);
 
         Offset = new Vector2(_random.Next(0, 1000), _random.Next(0, 1000));
         RectClipContent = true;
-        _parallaxManager.LoadParallaxByName(_parallaxId);
+        _parallaxManager.LoadParallaxByName("FastSpace");
     }
 
     protected override void Draw(DrawingHandleScreen handle)
     {
-        foreach (var layer in _parallaxManager.GetParallaxLayers(_parallaxId))
+        foreach (var layer in _parallaxManager.GetParallaxLayers("FastSpace"))
         {
             var tex = layer.Texture;
             var texSize = (tex.Size.X * (int) Size.X, tex.Size.Y * (int) Size.X) * layer.Config.Scale.Floored() / 1920;

@@ -55,11 +55,12 @@ namespace Content.Client.Lobby
             var lobbyNameCvar = _cfg.GetCVar(CCVars.ServerLobbyName);
             var serverName = _baseClient.GameInfo?.ServerName ?? string.Empty;
 
-            var title = string.IsNullOrEmpty(lobbyNameCvar) // Evin-edit
+            Lobby.ServerName.Text = string.IsNullOrEmpty(lobbyNameCvar)
                 ? Loc.GetString("ui-lobby-title", ("serverName", serverName))
                 : lobbyNameCvar;
 
-            Lobby.ServerInfo.SetInfoBlob(title); // Evin-edit
+            var width = _cfg.GetCVar(CCVars.ServerLobbyRightPanelWidth);
+            Lobby.RightSide.SetWidth = width;
 
             UpdateLobbyUi();
 
@@ -200,7 +201,7 @@ namespace Content.Client.Lobby
         {
             if (ev.SoundtrackFilename == null)
             {
-                Lobby!.StartTime.Text = Loc.GetString("lobby-state-song-no-song-text");
+                Lobby!.LobbySong.SetMarkup(Loc.GetString("lobby-state-song-no-song-text"));
             }
             else if (
                 ev.SoundtrackFilename != null
@@ -221,7 +222,7 @@ namespace Content.Client.Lobby
                     ("songTitle", title),
                     ("songArtist", artist));
 
-                Lobby!.StartTime.Text = markup;
+                Lobby!.LobbySong.SetMarkup(markup);
             }
         }
 
