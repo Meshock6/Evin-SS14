@@ -1,0 +1,7 @@
+- type: customGhost
+  id: ghostbaza
+  ckey: localhost@JoeGenero
+  sprite: /Textures/_Evin/CustomGhosts/ghost.rsi
+  alpha: 0.8
+  ghostName: Sosul
+  ghostDescription: ...
